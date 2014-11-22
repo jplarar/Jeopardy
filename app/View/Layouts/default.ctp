@@ -46,7 +46,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Intramutos</a>
+            <a class="navbar-brand" href="#">Jeopardy</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
