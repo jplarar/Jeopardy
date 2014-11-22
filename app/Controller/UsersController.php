@@ -8,7 +8,7 @@
 
 App::uses('CakeEmail', 'Network/Email');
 
-class UsuariosController extends AppController
+class UsersController extends AppController
 {
     public $helpers = array('Html', 'Form');
 
@@ -19,17 +19,16 @@ class UsuariosController extends AppController
 
     }
 
-
     public function add()
     {
-
         $this->layout='login';
 
         if ($this->request->is('post')) {
-            if ($this->Usuario->save($this->request->data))
+            $this->User->create();
+            if ($this->User->save($this->request->data))
             {
                 $this->Session->setFlash('Tu usuario ha sido creado');
-
+/*
                 // send email with user password
                 $Email = new CakeEmail();
                 $Email->from(array('jeopardy@hotmail.com' => 'Jeopardy'))
@@ -38,6 +37,7 @@ class UsuariosController extends AppController
                     ->send('Hola '.$this->request['username']."\n"
                         ."Tu contraseña es la siguiente: 12345 \n".
                         "\nJeopardy");
+*/
 
                 $this->redirect(array('controller'=>'security', 'action'=>'login'));
             }

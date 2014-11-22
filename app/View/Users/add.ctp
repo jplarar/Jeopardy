@@ -5,7 +5,7 @@
     <h1><a href="/"><i class="fa fa-arrow-left"> </i> </a> Crear Usuario </h1>
     <fieldset>
         <?php
-        echo $this->Form->create('Usuario');
+        echo $this->Form->create('User');
 
         echo $this->Form->input('username', array(
             'class' => 'form-control'));

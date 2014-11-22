@@ -12,7 +12,7 @@ class SecurityController extends AppController {
 
         $this->layout='login';
         //if already logged-in, redirect
-        if($this->Session->check('Auth.Usuario')){
+        if($this->Session->check('Auth.User')){
             $this->redirect(array('controller' => 'clases', 'action' => 'index'));
         }
 

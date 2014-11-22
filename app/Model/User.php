@@ -2,7 +2,7 @@
 
 App::uses('AuthComponent', 'Controller/Component');
 
-class Usuario extends AppModel {
+class User extends AppModel {
 
     public $validate = array(
         'username' => array(
@@ -18,6 +18,12 @@ class Usuario extends AppModel {
             'alphaNumericDashUnderscore' => array(
                 'rule'    => array('alphaNumericDashUnderscore'),
                 'message' => 'Username can only be letters, numbers and underscores'
+            ),
+        ),
+        'password' => array(
+            'required' => array(
+                'rule' => array('notEmpty'),
+                'message' => 'A password is required'
             ),
         ),
 
@@ -41,17 +47,17 @@ class Usuario extends AppModel {
             'first',
             array(
                 'fields' => array(
-                    'Usuario.id',
-                    'Usuario.username'
+                    'User.id',
+                    'User.username'
                 ),
                 'conditions' => array(
-                    'Usuario.username' => $check['username']
+                    'User.username' => $check['username']
                 )
             )
         );
 
         if(!empty($username)){
-            if($this->data[$this->alias]['id'] == $username['Usuario']['id']){
+            if($this->data[$this->alias]['id'] == $username['User']['id']){
                 return true;
             }else{
                 return false;
@@ -72,7 +78,7 @@ class Usuario extends AppModel {
             'first',
             array(
                 'fields' => array(
-                    'Usuario.id'
+                    'User.id'
                 ),
                 'conditions' => array(
                     'User.email' => $check['email']
@@ -81,7 +87,7 @@ class Usuario extends AppModel {
         );
 
         if(!empty($email)){
-            if($this->data[$this->alias]['id'] == $email['Usuario']['id']){
+            if($this->data[$this->alias]['id'] == $email['User']['id']){
                 return true;
             }else{
                 return false;
@@ -98,6 +104,20 @@ class Usuario extends AppModel {
         $value = $value[0];
 
         return preg_match('/^[a-zA-Z0-9_ \-]*$/', $value);
+    }
+
+    /**
+     * Before Save
+     * @param array $options
+     * @return boolean
+     */
+    public function beforeSave($options = array()) {
+        // hash our password
+        if (isset($this->data[$this->alias]['password'])) {
+            $this->data[$this->alias]['password'] = AuthComponent::password($this->data[$this->alias]['password']);
+        }
+        // fallback to our parent
+        return parent::beforeSave($options);
     }
 
 }
