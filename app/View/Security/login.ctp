@@ -14,7 +14,7 @@
     <button class="btn btn-lg btn-primary btn-block" type="submit">Iniciar sesion</button>
     <?php echo $this->Form->end(); ?>
 
-    <a href="/users/add">Creas usuasio</a>
+    <a href="/usuarios/add">Creas usuasio</a>
 
 
 
