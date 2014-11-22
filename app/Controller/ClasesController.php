@@ -2,11 +2,11 @@
 
 class ClasesController extends AppController {
     public $helpers = array('Html', 'Form');
-	public $uid = $this->Auth->user('id');
 
     public function index() {
-		
-		$clase = $this->Clase->find('all', array('user_id' => $uid));
+        $uid = $this->Auth->user('id');
+		$clase = $this->Clase->find('all', array(
+            'conditions' => array('usuario_id' => $uid)));
 		$this->set('clases', $clase);
     }
 	

@@ -28,7 +28,7 @@ class UsersController extends AppController
             if ($this->User->save($this->request->data))
             {
                 $this->Session->setFlash('Tu usuario ha sido creado');
-/*
+
                 // send email with user password
                 $Email = new CakeEmail();
                 $Email->from(array('jeopardy@hotmail.com' => 'Jeopardy'))
@@ -37,7 +37,7 @@ class UsersController extends AppController
                     ->send('Hola '.$this->request['username']."\n"
                         ."Tu contraseña es la siguiente: 12345 \n".
                         "\nJeopardy");
-*/
+
 
                 $this->redirect(array('controller'=>'security', 'action'=>'login'));
             }
