@@ -25,7 +25,7 @@ class UsuariosController extends AppController
             if ($this->Usuario->save($this->request->data))
             {
                 $this->Session->setFlash('Tu usuario ha sido creado');
-                    $this->redirect(array('action' => 'index'));
+                    $this->redirect(array('controller'=>'security', 'action'=>'login'));
             }
 
 
