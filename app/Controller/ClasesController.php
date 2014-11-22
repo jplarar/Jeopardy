@@ -5,7 +5,8 @@ class ClasesController extends AppController {
 
     public function index() {
         $uid = $this->Auth->user('id');
-		$clase = $this->Clase->find('all', array('user_id' => $uid));
+		$clase = $this->Clase->find('all', array(
+            'conditions' => array('usuario_id' => $uid)));
 		$this->set('clases', $clase);
     }
 	
