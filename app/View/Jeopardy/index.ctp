@@ -1,3 +1,5 @@
+
+
 <script type="text/javascript">
     function challenge(id) // no ';' here
     {
@@ -12,13 +14,70 @@
 
     }
 
-    function disable(id) // no ';' here
+    function disableAndSelectWinner(id) // no ';' here
     {
         id = 'd' + id;
         var elemDiv = document.getElementById(id);
         elemDiv.style.display = "none";
-        var elemGame = document.getElementById('game');
-        elemGame.style.display = "inline";
+        var elemSel = document.getElementById('selectTeamDiv');
+        elemSel.style.display = "inline-block";
+
+    }
+    function disableAndReturn() // no ';' here
+    {
+
+        var elemCb = document.getElementById('selectTeam');
+
+        if (elemCb.value != "")
+        {  /*
+
+
+            var xmlhttp;
+            if(window.XMLHttpRequest) {
+
+                xmlhttp = new XMLHttpRequest();
+            }
+            else {
+
+                xmlhttp = new ActiveXObject('Microsoft.XMLHTTP');
+            }
+
+            xmlhttp.onreadystatechange = function () {
+
+                if(xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+
+                    alert(xmlhttp.responseText);
+                    alert('jalo');
+                }
+
+                if(xmlhttp.readyState == 1)
+                {
+                    alert('1');
+                }
+                if(xmlhttp.readyState == 2)
+                {
+                    alert('1');
+                }
+                if(xmlhttp.readyState == 3)
+                {
+                    alert('1');
+                }
+            };
+
+
+        xmlhttp.open('POST', '/Jeopardy/jeopardy/checkById', true);
+        xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        xmlhttp.send();*/
+
+
+
+            var elemSel = document.getElementById('selectTeamDiv');
+            elemSel.style.display = "none";
+            var elemGame = document.getElementById('game');
+            elemGame.style.display = "inline";
+
+        }
+
     }
 </script>
 <?php foreach ($pistas as $pista): ?>
@@ -42,7 +101,7 @@
                     case 1:
                         ?>
                         <button type="button" class="btn btn-info" aria-expanded="false"
-                                onclick="disable(<?php echo $p['Pista']['id']; ?>)">
+                                onclick="disableAndSelectWinner(<?php echo $p['Pista']['id']; ?>)">
                             <?php echo $p['Pista']['correcta']; ?>
                         </button>
                         <?php break;
@@ -76,6 +135,19 @@
         </div>
     <?php endforeach; ?>
 <?php endforeach; ?>
+
+<div id="selectTeamDiv" class="div-custom">
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <h1 align = "center" style="color:white">Selecciona al equipo que contesto correctamente la pregunta.</h1>
+    <label for="selectTeam">selectTeam</label>
+    <select name="selectTeam" id="selectTeam">
+        <option value="0">1</option>
+    </select>
+    <button id="updateBtn" type="button" class="btn btn-info" aria-expanded="false"
+            onclick="disableAndReturn();">
+        Continuar
+    </button>
+</div>
 <div id="game" style="display:inline">
     <table>
         <!-- Here is where we loop through our $posts array, printing out post info -->
@@ -167,3 +239,22 @@
     </table>
 
 </div>
+
+<?php
+$this->Js->get('#updateBtn')->event('click',
+    $this->Js->request(array(
+        'controller' => 'jeopardy',
+        'action' => 'checkById',
+    ), array(
+        'update' => '#selectTeam',
+        'async' => true,
+        'method' => 'post',
+        'dataExpression' => true,
+        'data' => $this->Js->serializeForm(array(
+            'isForm' => true,
+            'inline' => true
+        ))
+    ))
+);
+
+?>

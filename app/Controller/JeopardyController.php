@@ -2,7 +2,7 @@
 
 class JeopardyController extends AppController
 {
-    public $helpers = array('Html', 'Form','Js' => array('Jquery'));
+    public $helpers = array('Html', 'Form', 'Js');
 
     public function index($id)
     {
@@ -19,20 +19,23 @@ class JeopardyController extends AppController
            $pista[] = $this->Pista->find('all', array('conditions' => array('categoria_id'  => $categoria['Categoria']['id']), 'order' => 'id ASC'));
        endforeach;
         $this->set('pistas', $pista);
+
     }
 
 
-    public function checkById($id)
+    public function checkById()
     {
-
-
+        debug('entro');
+        $id =1;
         $this->loadModel('Pista');
 
 
         $pista = $this->Pista->find('all', array('conditions' => array('id'  => $id)));
 
         echo $pista;
-        //$this->set('pistas', $pista);
+        pr('Some text to test if the request is working');
+        $this->layout = 'ajax';
+        $this->render('/Jeopardy/jeopardy/checkById');
     }
 
 
