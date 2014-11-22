@@ -3,7 +3,7 @@
 
 <div class="container">
     <?php echo $this->Session->flash('auth'); ?>
-    <?php echo $this->Form->create('User', array(
+    <?php echo $this->Form->create('Usuario', array(
         'class' => 'form-signin')); ?>
     <h2 class="form-signin-heading">Jeopardy</h2>
     <?php echo $this->Form->input('username', array(
