@@ -3,7 +3,8 @@
 class CategoriasController extends AppController {
     public $helpers = array('Html', 'Form');
 
-    public function index() {
-        $this->set('categorias', $this->Categoria->find('all'));
+    public function index($id) {
+		$categoria = $this->Categoria->find('all', array('clase_id' => $id));
+		$this->set('categorias', $categoria);
     }
 }
