@@ -41,19 +41,27 @@ class EmailConfig {
 
 	public $default = array(
 		'transport' => 'Mail',
-		'from' => 'you@localhost',
+		'from' => 'jeopardydaw@gmail.com',
 		//'charset' => 'utf-8',
 		//'headerCharset' => 'utf-8',
 	);
 
+    public $gmail = array(
+        'host' => 'ssl://smtp.gmail.com',
+        'port' => 465,
+        'username' => 'jeopardydaw@gmail.com',
+        'password' => 'facil123',
+        'transport' => 'Smtp'
+    );
+
 	public $smtp = array(
 		'transport' => 'Smtp',
-		'from' => array('site@localhost' => 'My Site'),
+		'from' => array('jeopardydaw@gmail.com' => 'My Site'),
 		'host' => 'localhost',
-		'port' => 25,
+		'port' => 587,
 		'timeout' => 30,
-		'username' => 'user',
-		'password' => 'secret',
+		'username' => 'jeopardydaw@gmail.com',
+		'password' => 'facil123',
 		'client' => null,
 		'log' => false,
 		//'charset' => 'utf-8',
