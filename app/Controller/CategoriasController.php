@@ -8,6 +8,17 @@ class CategoriasController extends AppController {
 		$this->set('categorias', $categoria);
     }
 	
+	public function add() {
+        if ($this->request->is('post')) {
+            $this->Categoria->create();
+            if ($this->Categoria->save($this->request->data)) {
+                $this->Session->setFlash(__('Se guardo la informacion correctamente.'));
+                return $this->redirect(array('action' => 'index'));
+            }
+            $this->Session->setFlash(__('No se pudo agregar la informacion.'));
+        }
+    }
+	
 	public function edit($id = null) {
 		if (!$id) {
 			throw new NotFoundException(__('Invalid category'));
@@ -29,6 +40,19 @@ class CategoriasController extends AppController {
 
 		if (!$this->request->data) {
 			$this->request->data = $categoria;
+		}
+	}
+	
+	public function delete($id) {
+		if ($this->request->is('get')) {
+			throw new MethodNotAllowedException();
+		}
+
+		if ($this->Categoria->delete($id)) {
+			$this->Session->setFlash(
+				__('Se borro la categoria de manera exitosa.')
+			);
+			return $this->redirect(array('action' => 'index'));
 		}
 	}
 }
