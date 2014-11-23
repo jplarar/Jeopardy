@@ -27,14 +27,16 @@ $user = $this->Session->read('Auth.User');
 
         echo $this->Html->css('bootstrap.min');
         echo $this->Html->css('dashboard');
-
+        echo $this->Html->script('jquery-1.11.1.min');
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
 		echo $this->fetch('script');
 	?>
+
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
+
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -70,6 +72,7 @@ $user = $this->Session->read('Auth.User');
 		<div id="footer">
 		</div>
 	</div>
-	<?php echo $this->element('sql_dump'); ?>
+	<?php echo $this->element('sql_dump'); echo $this->Js->writeBuffer();?>
+
 </body>
 </html>
