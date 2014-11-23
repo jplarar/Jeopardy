@@ -26,19 +26,45 @@
             <h1>
                 <?php echo $p['Pista']['pista'];?>
             </h1>
+            <?php
+                $randArray = array();
+                while (count($randArray) != 4)
+                {
+                    $rand = rand(1, 4);
+                    if (!(in_array($rand,$randArray))){
+                        $randArray[]=$rand;
+                    }
+                }
 
-            <button type="button" class="btn btn-info"  aria-expanded="false" onclick="disable(<?php echo $p['Pista']['id'];?>)">
-            <?php echo $p['Pista']['correcta'];?>
-            </button>
-            <button type="button" class="btn btn-info"  aria-expanded="false" >
-                <?php echo $p['Pista']['incorrectaUno'];?>
-            </button>
-            <button type="button" class="btn btn-info"  aria-expanded="false" >
-                <?php echo $p['Pista']['incorrectaDos'];?>
-            </button>
-            <button type="button" class="btn btn-info"  aria-expanded="false">
-                <?php echo $p['Pista']['incorrectaTres'];?>
-            </button>
+                foreach ($randArray as $r):
+                    switch ($r)
+                    {
+                        case 1:?>
+                            <button type="button" class="btn btn-info"  aria-expanded="false" onclick="disable(<?php echo $p['Pista']['id'];?>)">
+                            <?php echo $p['Pista']['correcta'];?>
+                            </button>
+                            <?php break;
+
+                        case 2:?>
+                            <button type="button" class="btn btn-info"  aria-expanded="false" >
+                                <?php echo $p['Pista']['incorrectaUno'];?>
+                            </button>
+                            <?php break;
+
+                        case 3:?>
+                            <button type="button" class="btn btn-info"  aria-expanded="false" >
+                                <?php echo $p['Pista']['incorrectaDos'];?>
+                            </button>
+                            <?php break;
+
+                        case 4:?>
+                            <button type="button" class="btn btn-info"  aria-expanded="false">
+                                <?php echo $p['Pista']['incorrectaTres'];?>
+                            </button>
+                            <?php break;
+                    }
+                endforeach; ?>
+
         </div>
     <?php  endforeach; ?>
 <?php  endforeach; ?>
