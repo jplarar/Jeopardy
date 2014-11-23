@@ -29,7 +29,7 @@
                         <?php
                         echo $this->Form->postLink(
                             'Borrar',
-                            array('action' => 'delete', $categoria['Categoria']['id']),
+                            array('action' => 'delete', $categoria['Categoria']['id'], $cid),
                             array('confirm' => 'Estas seguro?')
                         );
                         ?>
