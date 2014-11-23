@@ -2,5 +2,6 @@
 <?php
 echo $this->Form->create('Clase');
 echo $this->Form->input('nombre');
+echo $this->Form->input('usuario_id', array('type' => 'hidden', 'default' => $uid));
 echo $this->Form->end('Save Post');
 ?>
