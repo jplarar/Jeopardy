@@ -6,7 +6,7 @@ class JeopardyController extends AppController
 
     public function index($id)
     {
-        $id = 3;
+
 
         $this->loadModel('Categoria');
         $categorias = $this->Categoria->find('all',array('conditions' => array('clase_id' => $id), 'order' => 'id ASC'));
