@@ -50,7 +50,11 @@ $user = $this->Session->read('Auth.User');
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#"> <?php echo $user['username'] ?> </a></li>
                 <li>
-                    <a href="/logout"><i class="fa fa-power-off"> </i> Log out</a>
+                    <?php
+                    echo $this->Html->link(
+                        'Log out', array('controller' => 'security', 'action' => 'logout')
+                    );
+                    ?>
                 </li>
             </ul>
         </div>
