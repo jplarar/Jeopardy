@@ -37,6 +37,12 @@
                             'Editar', array('action' => 'edit', $clase['Clase']['id'])
                         );
                         ?>
+                        <i class="fa fa-gamepad"></i>
+                        <?php
+                        echo $this->Html->link(
+                            'Jugar', array('action' => 'partida', $clase['Clase']['id'])
+                        );
+                        ?>
                     </td>
 
                 </tr>

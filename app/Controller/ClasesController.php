@@ -59,4 +59,19 @@ class ClasesController extends AppController {
 			return $this->redirect(array('action' => 'index'));
 		}
 	}
+
+    public function partida($claseId){
+        $this->loadModel('Partida');
+        $this->Partida->create();
+        $localtime = date('Y-m-d H:i:s');
+        $data = array('fecha' => $localtime, 'clase_id' => $claseId);
+        $this->Partida->save($data);
+        $partida = $this->Partida->find('first', array(
+            'conditions' => array('fecha' => $localtime)));
+        $partidaId = $partida['Partida']['id'];
+        CakeLog::debug($partidaId);
+        return $this->redirect(array('controller' => 'equipos', 'action' => 'add', $partidaId));
+
+
+    }
 }
