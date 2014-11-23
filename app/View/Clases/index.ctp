@@ -2,12 +2,19 @@
 
 <?php echo $this->Html->link(
     'Agregar Clase',
-    array('controller' => 'clases', 'action' => 'add')
+    array('controller' => 'clases', 'action' => 'add'),
+    array('escape' => false, 'class' => "btn btn-primary btn-lg")
 ); ?>
 
-<table>
-    <!-- Here is where we loop through our $posts array, printing out post info -->
-
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
     <?php foreach ($clases as $clase): ?>
     <tr>
 		<td>
@@ -33,4 +40,6 @@
 	</tr>
     <?php endforeach; ?>
     <?php unset($clase); ?>
-</table>
+        </tbody>
+    </table>
+</div>

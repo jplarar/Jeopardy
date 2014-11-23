@@ -1,13 +1,19 @@
-<h1>Categorias</h1>
+<h1 class="page-header">Categorias</h1>
 
 <?php echo $this->Html->link(
     'Agregar Categoria',
-    array('controller' => 'categorias', 'action' => 'add')
+    array('controller' => 'categorias', 'action' => 'add'),
+    array('escape' => false, 'class' => "btn btn-primary btn-lg")
 ); ?>
-
-<table>
-    <!-- Here is where we loop through our $posts array, printing out post info -->
-
+<div class="table-responsive">
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Nombre</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
     <?php foreach ($categorias as $categoria): ?>
     <tr>
 		<td>
@@ -29,8 +35,9 @@
                 );
             ?>
         </td>
-		
 	</tr>
     <?php endforeach; ?>
     <?php unset($categoria); ?>
+    </tbody>
 </table>
+    </div>
