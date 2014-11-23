@@ -3191,6 +3191,69 @@ select[multiple].form-group-lg .form-control {
     box-shadow: none;
     opacity: .65
 }
+.btn-customX {
+    border: none;
+    background: url('../img/btnX.jpg') no-repeat top left;
+    font-size: 30px;
+    font-family: "Georgia"; 
+    color: white;
+    height: 100px;
+    width: 179px;
+}
+.btn-custom0 {
+    border: none;
+    background: url('../img/btn0.jpg') no-repeat top left;
+    font-size: 30px;
+    font-family: "Georgia"; 
+    color: white;
+    height: 100px;
+    width: 179px;
+}
+.btn-custom1 {
+    border: none;
+    background: url('../img/btn1.jpg') no-repeat top left;
+    font-size: 30px;
+    font-family: "Georgia"; 
+    color: white;
+    height: 100px;
+    width: 179px;
+}
+.btn-custom2 {
+    border: none;
+    background: url('../img/btn2.jpg') no-repeat top left;
+    font-size: 30px;
+    font-family: "Georgia"; 
+    color: white;
+    height: 100px;
+    width: 179px;
+}
+.btn-custom3 {
+    border: none;
+    background: url('../img/btn3.jpg') no-repeat top left;
+    font-size: 30px;
+    font-family: "Georgia"; 
+    color: white;
+    height: 100px;
+    width: 179px;
+}
+.btn-custom4 {
+    border: none;
+    background: url('../img/btn4.jpg') no-repeat top left;
+    font-size: 30px;
+    font-family: "Georgia"; 
+    color: white;
+    height: 100px;
+    width: 179px;
+}
+.btn-custom5 {
+    border: none;
+    background: url('../img/btn5.jpg') no-repeat top left;
+    font-size: 30px;
+    font-family: "Georgia"; 
+    color: white;
+    height: 100px;
+    width: 179px;
+}
 
 .btn-default {
     color: #333;
