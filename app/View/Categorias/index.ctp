@@ -2,7 +2,7 @@
 
 <?php echo $this->Html->link(
     'Agregar Categoria',
-    array('controller' => 'categorias', 'action' => 'add')
+    array('controller' => 'categorias', 'action' => 'add', $cid)
 ); ?>
 
 <table>
@@ -19,13 +19,13 @@
             <?php
                 echo $this->Form->postLink(
                     'Borrar',
-                    array('action' => 'delete', $categoria['Categoria']['id']),
+                    array('action' => 'delete', $categoria['Categoria']['id'], $cid),
                     array('confirm' => 'Estas seguro?')
                 );
             ?>
             <?php
                 echo $this->Html->link(
-                    'Editar', array('action' => 'edit', $categoria['Categoria']['id'])
+                    'Editar', array('action' => 'edit', $categoria['Categoria']['id'], $cid)
                 );
             ?>
         </td>

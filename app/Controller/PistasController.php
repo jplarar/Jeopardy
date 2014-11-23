@@ -6,20 +6,22 @@ class PistasController extends AppController {
     public function index($id) {
         $pista = $this->Pista->find('all', array('categoria_id' => $id));
 		$this->set('pistas', $pista);
+		$this->set('cid', $id);
     }
 	
-	public function add() {
+	public function add($cid) {
+		$this->set('cid', $cid);
         if ($this->request->is('post')) {
             $this->Pista->create();
             if ($this->Pista->save($this->request->data)) {
                 $this->Session->setFlash(__('Se guardo la informacion correctamente.'));
-                return $this->redirect(array('action' => 'index'));
+                return $this->redirect(array('action' => 'index', $cid));
             }
             $this->Session->setFlash(__('No se pudo agregar la informacion.'));
         }
     }
 	
-	public function edit($id = null) {
+	public function edit($id = null, $cid) {
 		if (!$id) {
 			throw new NotFoundException(__('Invalid clue'));
 		}
@@ -33,7 +35,7 @@ class PistasController extends AppController {
 			$this->Pista->id = $id;
 			if ($this->Pista->save($this->request->data)) {
 				$this->Session->setFlash(__('Your post has been updated.'));
-				return $this->redirect(array('action' => 'index'));
+				return $this->redirect(array('action' => 'index', $cid));
 			}
 			$this->Session->setFlash(__('Unable to update your post.'));
 		}
@@ -43,7 +45,7 @@ class PistasController extends AppController {
 		}
 	}
 	
-	public function delete($id) {
+	public function delete($id, $cid) {
 		if ($this->request->is('get')) {
 			throw new MethodNotAllowedException();
 		}
@@ -52,7 +54,7 @@ class PistasController extends AppController {
 			$this->Session->setFlash(
 				__('Se borro la pista de manera exitosa.')
 			);
-			return $this->redirect(array('action' => 'index'));
+			return $this->redirect(array('action' => 'index', $cid));
 		}
 	}
 }

@@ -6,20 +6,22 @@ class CategoriasController extends AppController {
     public function index($id) {
 		$categoria = $this->Categoria->find('all', array('clase_id' => $id));
 		$this->set('categorias', $categoria);
+		$this->set('cid', $id);
     }
 	
-	public function add() {
+	public function add($cid) {
+		$this->set('cid', $cid);
         if ($this->request->is('post')) {
             $this->Categoria->create();
             if ($this->Categoria->save($this->request->data)) {
                 $this->Session->setFlash(__('Se guardo la informacion correctamente.'));
-                return $this->redirect(array('action' => 'index'));
+                return $this->redirect(array('action' => 'index', $cid));
             }
             $this->Session->setFlash(__('No se pudo agregar la informacion.'));
         }
     }
 	
-	public function edit($id = null) {
+	public function edit($id = null,$cid) {
 		if (!$id) {
 			throw new NotFoundException(__('Invalid category'));
 		}
@@ -33,7 +35,7 @@ class CategoriasController extends AppController {
 			$this->Categoria->id = $id;
 			if ($this->Categoria->save($this->request->data)) {
 				$this->Session->setFlash(__('Your post has been updated.'));
-				return $this->redirect(array('action' => 'index'));
+				return $this->redirect(array('action' => 'index', $cid));
 			}
 			$this->Session->setFlash(__('Unable to update your post.'));
 		}
@@ -43,7 +45,7 @@ class CategoriasController extends AppController {
 		}
 	}
 	
-	public function delete($id) {
+	public function delete($id, $cid) {
 		if ($this->request->is('get')) {
 			throw new MethodNotAllowedException();
 		}
@@ -52,7 +54,7 @@ class CategoriasController extends AppController {
 			$this->Session->setFlash(
 				__('Se borro la categoria de manera exitosa.')
 			);
-			return $this->redirect(array('action' => 'index'));
+			return $this->redirect(array('action' => 'index', $cid));
 		}
 	}
 }

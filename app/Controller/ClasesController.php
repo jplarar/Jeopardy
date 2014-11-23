@@ -11,7 +11,9 @@ class ClasesController extends AppController {
     }
 	
 	public function add() {
-        if ($this->request->is('post')) {
+        $uid = $this->Auth->user('id');
+		$this->set('uid', $uid);
+		if ($this->request->is('post')) {
             $this->Clase->create();
             if ($this->Clase->save($this->request->data)) {
                 $this->Session->setFlash(__('Se guardo la informacion correctamente.'));
