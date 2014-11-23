@@ -3254,7 +3254,14 @@ select[multiple].form-group-lg .form-control {
     height: 100px;
     width: 179px;
 }
+.div-custom {
 
+    background: url('../img/challengeBack.jpg') no-repeat top left;
+    height: 600px;
+    width: 899px;
+    display:none;
+    text-align:center;
+}
 .btn-default {
     color: #333;
     background-color: #fff;
@@ -3344,8 +3351,10 @@ fieldset[disabled] .btn-success.active {
 
 .btn-info {
     color: #fff;
+    margin:0 auto;
     background-color: #5bc0de;
     border-color: #46b8da
+
 }
 
 .btn-info:hover, .btn-info:focus, .btn-info.focus, .btn-info:active, .btn-info.active, .open>.dropdown-toggle.btn-info {
