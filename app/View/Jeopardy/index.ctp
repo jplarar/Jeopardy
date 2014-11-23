@@ -49,21 +49,24 @@
 
                     case 2:
                         ?>
-                        <button type="button" class="btn btn-info" aria-expanded="false">
+                        <button type="button" class="btn btn-info" aria-expanded="false"
+                                onclick="alert('Respuesta Equivocada. Intenta de nuevo!')">
                             <?php echo $p['Pista']['incorrectaUno']; ?>
                         </button>
                         <?php break;
 
                     case 3:
                         ?>
-                        <button type="button" class="btn btn-info" aria-expanded="false">
+                        <button type="button" class="btn btn-info" aria-expanded="false"
+                                onclick="alert('Respuesta Equivocada. Intenta de nuevo!')">
                             <?php echo $p['Pista']['incorrectaDos']; ?>
                         </button>
                         <?php break;
 
                     case 4:
                         ?>
-                        <button type="button" class="btn btn-info" aria-expanded="false">
+                        <button type="button" class="btn btn-info" aria-expanded="false"
+                                onclick="alert('Respuesta Equivocada. Intenta de nuevo!')">
                             <?php echo $p['Pista']['incorrectaTres']; ?>
                         </button>
                         <?php break;
