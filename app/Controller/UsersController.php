@@ -46,4 +46,23 @@ class UsersController extends AppController
         }
 
     }
+
+    public function edit($id = null) {
+
+        $user = $this->User->find('first', array('id' => $id));
+
+        if ($this->request->is('post') || $this->request->is('put')) {
+            $this->User->id = $id;
+            if ($this->User->save($this->request->data)) {
+                $this->Session->setFlash(__('El password se ha actualizado'));
+                $this->redirect(array('controller' => 'clases', 'action' => 'index'));
+            }else{
+                $this->Session->setFlash(__('Unable to update your user.'));
+            }
+        }
+
+        if (!$this->request->data) {
+            $this->request->data = $user;
+        }
+    }
 }
