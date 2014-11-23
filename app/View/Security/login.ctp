@@ -12,9 +12,11 @@
         'class' => 'form-control'));
     ?>
     <button class="btn btn-lg btn-primary btn-block" type="submit">Iniciar sesion</button>
-    <?php echo $this->Form->end(); ?>
+    <?php echo $this->Form->end();
+          echo $this->Html->link(
+        'Nuevo usuario', array('controller' => 'Users', 'action' => 'add'));
 
-    <a href="/users/add">Creas usuasio</a>
+    ?>
 
 
 

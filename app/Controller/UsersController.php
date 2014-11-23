@@ -39,7 +39,6 @@ class UsersController extends AppController
                     ."Tu contraseña es la siguiente: 12345 \n".
                     "\nJeopardy");
 
-
                 $this->redirect(array('controller'=>'security', 'action'=>'login'));
             }
 

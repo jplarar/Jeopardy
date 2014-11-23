@@ -2,7 +2,8 @@
 
 
 <div class="container">
-    <h1><a href="/"><i class="fa fa-arrow-left"> </i> </a> Crear Usuario </h1>
+    <h1><?php echo $this->Html->link(
+            "<", array('controller' => 'Security', 'action' => 'login'));?> Crear Usuario </h1>
     <fieldset>
         <?php
         echo $this->Form->create('User');
