@@ -21,7 +21,7 @@
 			array('controller' => 'pistas', 'action' => 'index', $categoria['Categoria']['id'])); ?>
         </td>
 		
-		<td>
+		<td><i class="fa fa-times"></i>
             <?php
                 echo $this->Form->postLink(
                     'Borrar',
@@ -29,6 +29,7 @@
                     array('confirm' => 'Estas seguro?')
                 );
             ?>
+            <i class="fa fa-pencil-square-o"></i>
             <?php
                 echo $this->Html->link(
                     'Editar', array('action' => 'edit', $categoria['Categoria']['id'])

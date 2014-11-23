@@ -1,4 +1,4 @@
-<h1>Clases</h1>
+<h1 class="page-header">Clases</h1>
 
 <?php echo $this->Html->link(
     'Agregar Clase',
@@ -22,7 +22,7 @@
 			array('controller' => 'categorias', 'action' => 'index', $clase['Clase']['id'])); ?>
         </td>
 		
-		<td>
+		<td><i class="fa fa-times"></i>
             <?php
                 echo $this->Form->postLink(
                     'Borrar',
@@ -30,6 +30,7 @@
                     array('confirm' => 'Estas seguro?')
                 );
             ?>
+            <i class="fa fa-pencil-square-o"></i>
             <?php
                 echo $this->Html->link(
                     'Editar', array('action' => 'edit', $clase['Clase']['id'])
