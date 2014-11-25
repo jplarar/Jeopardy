@@ -17,4 +17,22 @@ class EquiposController extends AppController {
             $this->Session->setFlash(__('No se pudo agregar la informacion.'));
         }
     }
+
+    public function score($equipoId = null, $puntos = null){
+
+        if(!$equipoId)
+        {
+            $equipoId = @$this->request->data('equipoId');
+        }
+        if(!$puntos)
+        {
+            $puntos = @$this->request->data('puntos');
+        }
+
+        $this->Equipo->id = $equipoId;
+        $data = array('puntos' => $puntos);
+        $this->Equipo->save($data);
+
+    }
+
 }

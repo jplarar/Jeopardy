@@ -4,9 +4,11 @@ class JeopardyController extends AppController
 {
     public $helpers = array('Html', 'Form', 'Js');
 
-    public function index($id)
+    public function index($id, $partidaId)
     {
-
+        $this->loadModel('Equipo');
+        $equipos = $this->Equipo->find('all', array('conditions' => array('partida_id' => $partidaId)));
+        $this->set('equipos', $equipos);
 
         $this->loadModel('Categoria');
         $categorias = $this->Categoria->find('all',array('conditions' => array('clase_id' => $id), 'order' => 'id ASC'));

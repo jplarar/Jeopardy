@@ -11,5 +11,5 @@ echo $this->Html->link(
             array('controller' => 'equipos', 'action' => 'add', $pid));
 echo $this->Html->link(
             'Empezar juego ',
-            array('controller' => 'jeopardy', 'action' => 'index', $cid));
+            array('controller' => 'jeopardy', 'action' => 'index', $cid, $pid));
 ?>

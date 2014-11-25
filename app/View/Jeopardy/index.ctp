@@ -17,6 +17,8 @@
     function disableAndSelectWinner(id) // no ';' here
     {
         id = 'd' + id;
+        var aux = document.getElementById('aux');
+        aux.innerHTML(id);
         var elemDiv = document.getElementById(id);
         elemDiv.style.display = "none";
         var elemSel = document.getElementById('selectTeamDiv');
@@ -25,51 +27,26 @@
     }
     function disableAndReturn() // no ';' here
     {
-
+        var seleccion = document.getElementById("seleccion").selected = true;
         var elemCb = document.getElementById('selectTeam');
+        var equipoId = seleccion.value;
+        var aux = document.getElementById('aux');
+        var puntos = aux.innerHTML;
 
         if (elemCb.value != "")
-        {  /*
+        {
 
+            $.ajax({
+                type: "POST",
+                url: '<?php echo Router::url(array('controller' => 'equipos', 'action' => 'score')); ?>',
+                data: {
+                    equipoId: equipoId,
+                    puntos: puntos
+                },
+                success: function(){
 
-            var xmlhttp;
-            if(window.XMLHttpRequest) {
-
-                xmlhttp = new XMLHttpRequest();
-            }
-            else {
-
-                xmlhttp = new ActiveXObject('Microsoft.XMLHTTP');
-            }
-
-            xmlhttp.onreadystatechange = function () {
-
-                if(xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-
-                    alert(xmlhttp.responseText);
-                    alert('jalo');
                 }
-
-                if(xmlhttp.readyState == 1)
-                {
-                    alert('1');
-                }
-                if(xmlhttp.readyState == 2)
-                {
-                    alert('1');
-                }
-                if(xmlhttp.readyState == 3)
-                {
-                    alert('1');
-                }
-            };
-
-
-        xmlhttp.open('POST', '/Jeopardy/jeopardy/checkById', true);
-        xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-        xmlhttp.send();*/
-
-
+            });
 
             var elemSel = document.getElementById('selectTeamDiv');
             elemSel.style.display = "none";
@@ -141,7 +118,10 @@
     <h1 align = "center" style="color:white">Selecciona al equipo que contesto correctamente la pregunta.</h1>
     <label for="selectTeam">selectTeam</label>
     <select name="selectTeam" id="selectTeam">
-        <option value="0">1</option>
+        <?php foreach ($equipos as $equipo):
+            echo "<option value=".$equipo['Equipo']['id']." id='seleccion'>".$equipo['Equipo']['nombre']."</option>";
+        endforeach;
+        ?>
     </select>
     <button id="updateBtn" type="button" class="btn btn-info" aria-expanded="false"
             onclick="disableAndReturn();">
@@ -239,7 +219,7 @@
     </table>
 
 </div>
-
+<p style="display: none" id="aux"></p>
 <?php
 $this->Js->get('#updateBtn')->event('click',
     $this->Js->request(array(
