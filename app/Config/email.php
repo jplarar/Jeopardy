@@ -49,8 +49,8 @@ class EmailConfig {
     public $gmail = array(
         'host' => 'ssl://smtp.gmail.com',
         'port' => 465,
-        'username' => 'jeopardydaw@gmail.com',
-        'password' => 'facil123',
+        'username' => 'daw.jeopardy@gmail.com',
+        'password' => 'juanpaulo',
         'transport' => 'Smtp'
     );
 
@@ -60,8 +60,8 @@ class EmailConfig {
 		'host' => 'localhost',
 		'port' => 587,
 		'timeout' => 30,
-		'username' => 'jeopardydaw@gmail.com',
-		'password' => 'facil123',
+		'username' => 'daw.jeopardy@gmail.com',
+		'password' => 'juanpaulo',
 		'client' => null,
 		'log' => false,
 		//'charset' => 'utf-8',
