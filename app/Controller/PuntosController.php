@@ -8,7 +8,8 @@ class PuntosController extends AppController
     {
 
         $this->loadModel('Equipo');
-        $equipos = $this->Equipo->find('all');
+        $equipos = $this->Equipo->find('all', array(
+            'order' => array('Equipo.puntos' => 'desc')));
         $this->set('equipos', $equipos);
 
     }
