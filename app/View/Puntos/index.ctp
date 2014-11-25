@@ -12,7 +12,8 @@
             <?php foreach ($equipos as $equipo): ?>
                 <tr>
                     <td><i class="fa fa-users"></i>
-                        <?php echo $equipo['Equipo']['nombre']; ?>
+                        <?php echo $this->Html->link($equipo['Equipo']['nombre'],
+                            array('controller' => 'puntos', 'action' => 'mostrarIntegrantes', $equipo['Equipo']['id'])); ?>
                     </td>
 
                     <td><i class="fa fa-trophy"></i>
