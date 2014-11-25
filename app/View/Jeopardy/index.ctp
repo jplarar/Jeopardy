@@ -18,7 +18,7 @@
     {
         id = 'd' + id;
         var aux = document.getElementById('aux');
-        aux.innerHTML(id);
+        aux.innerHTML = id;
         var elemDiv = document.getElementById(id);
         elemDiv.style.display = "none";
         var elemSel = document.getElementById('selectTeamDiv');
@@ -27,26 +27,32 @@
     }
     function disableAndReturn() // no ';' here
     {
-        var seleccion = document.getElementById("seleccion").selected = true;
+        var seleccion = document.getElementById("selectTeam").selectedIndex;
         var elemCb = document.getElementById('selectTeam');
-        var equipoId = seleccion.value;
+        var equipoId = document.getElementsByTagName("option")[seleccion].value;
         var aux = document.getElementById('aux');
-        var puntos = aux.innerHTML;
+        var pistaId = aux.innerHTML;
+        pistaId = pistaId.substring(1);
+
+        console.log(pistaId);
+        console.log(equipoId);
 
         if (elemCb.value != "")
         {
+
 
             $.ajax({
                 type: "POST",
                 url: '<?php echo Router::url(array('controller' => 'equipos', 'action' => 'score')); ?>',
                 data: {
                     equipoId: equipoId,
-                    puntos: puntos
+                    pistaId: pistaId
                 },
                 success: function(){
 
                 }
             });
+
 
             var elemSel = document.getElementById('selectTeamDiv');
             elemSel.style.display = "none";

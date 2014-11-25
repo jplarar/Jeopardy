@@ -18,19 +18,26 @@ class EquiposController extends AppController {
         }
     }
 
-    public function score($equipoId = null, $puntos = null){
+    public function score(){
 
-        if(!$equipoId)
-        {
-            $equipoId = @$this->request->data('equipoId');
-        }
-        if(!$puntos)
-        {
-            $puntos = @$this->request->data('puntos');
-        }
+        $this->loadModel('Pista');
+
+        $equipoId = @$this->request->data('equipoId');
+
+        $pistaId = @$this->request->data('pistaId');
+
+        $equipo = $this->Equipo->findById($equipoId);
+        
+        $puntosActuales = $equipo['Equipo']['puntos'];
+
+        $pista = $this->Pista->findById($pistaId);
+
+        $puntos = $pista['Pista']['puntos'];
+
+        $puntosTotales = $puntosActuales + $puntos;
 
         $this->Equipo->id = $equipoId;
-        $data = array('puntos' => $puntos);
+        $data = array('puntos' => $puntosTotales);
         $this->Equipo->save($data);
 
     }
