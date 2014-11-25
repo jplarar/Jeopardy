@@ -226,6 +226,13 @@
 
 </div>
 <p style="display: none" id="aux"></p>
+<br>
+<?php echo $this->Html->link(
+    'Terminar Juego',
+    array('controller' => 'Puntos', 'action' => 'index'),
+    array('escape' => false, 'class' => "btn btn-primary btn-lg")
+); ?>
+
 <?php
 $this->Js->get('#updateBtn')->event('click',
     $this->Js->request(array(

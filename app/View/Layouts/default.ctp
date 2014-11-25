@@ -46,7 +46,11 @@ $user = $this->Session->read('Auth.User');
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Jeopardy</a>
+            <?php
+            echo $this->Html->link(
+                'Jeopardy', array('controller' => 'clases', 'action' => 'index'), array('class' => 'navbar-brand')
+            );
+            ?>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
@@ -72,7 +76,6 @@ $user = $this->Session->read('Auth.User');
 		<div id="footer">
 		</div>
 	</div>
-	<?php echo $this->element('sql_dump'); echo $this->Js->writeBuffer();?>
 
 </body>
 </html>

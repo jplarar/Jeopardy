@@ -27,7 +27,7 @@ class EquiposController extends AppController {
         $pistaId = @$this->request->data('pistaId');
 
         $equipo = $this->Equipo->findById($equipoId);
-        
+
         $puntosActuales = $equipo['Equipo']['puntos'];
 
         $pista = $this->Pista->findById($pistaId);
