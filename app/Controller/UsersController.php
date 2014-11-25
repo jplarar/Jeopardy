@@ -32,7 +32,7 @@ class UsersController extends AppController
                 // send email with user password
                 $Email = new CakeEmail();
                 $Email->config('gmail');
-                $Email->from('jeopardydaw@gmail.com');
+                $Email->from('daw.jeopardy@gmail.com');
                 $Email->to($this->request->data['User']['email']);
                 $Email->subject('Contraseña de jeopardy');
                 $Email->send('Hola '.$this->request->data['User']['username']."\n"
